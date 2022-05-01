@@ -1,0 +1,45 @@
+#headerTitle {
+    text-align: center;
+    padding-left: 10px;
+    padding-top: 5px;
+    border: 1px solid black;
+    height: 100px;
+    color: darkcyan;
+    background-color: beige;
+}
+#allMessages{
+    height: 50%;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-left: 10px;
+    border: 1px solid black;
+}
+#divUserMessages {
+    height: 50%;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-right: 10px;
+    text-align: right;
+}
+#divFriendMessages {
+    height: 50%;
+    width: 100%;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-left: 10px;
+    text-align: left;
+}
+#messageTimestampFriend, #messageTimestampUser {
+    text-align: center;
+}
+#divInput {
+    height: 50px;
+    width: 100%;
+    text-align: center;
+    box-sizing: border-box;
+    padding-top: 10px;
+    padding-left: 10px;
+    border: 1px solid black;
+}
