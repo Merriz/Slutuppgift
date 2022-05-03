@@ -4,9 +4,7 @@
   "description": "",
   "type": "module",
   "scripts": {
-    "start": "concurrently \"npm:app\" \"npm:api\"",
-    "app": "vite",
-    "api": "nodemon api.js"
+    "start": "vite"
   },
   "keywords": [],
   "author": "",

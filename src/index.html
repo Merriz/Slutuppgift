@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -8,33 +9,37 @@
     <script src="index.js"></script>
 </head>
 <body>
-    <form action="/api/hej" method="post" name="hej"></form>
+
     <header id="headerTitle"> <h1>Chat</h1></header>
     <main>
         <article class="message" id="allMessages">
-            <div id="divFriendMessages">
-<!--                <div id="messageTimestampFriend">-->
-<!--                    <label for="timeStampMessage">Friend timestamp</label>-->
-<!--                </div>-->
-<!--                <label> Name: <input type="text" name="name"></label>-->
-<!--                <p>Hello good Sir!</p>-->
-            </div>
-            <div id="divUserMessages">
-<!--                <div id="messageTimestampUser">-->
-<!--                    <label for="timeStampMessage">User timestamp</label>-->
-<!--                </div>-->
-<!--                <label> Name: <input type="text" name="name"></label>-->
-<!--                <p>Well met good Sir!</p>-->
-            </div>
+            <form action="/api/messages" method="post" name="hej">
+                <div id="divFriendMessages">
+    <!--                <div id="messageTimestampFriend">-->
+    <!--                    <label for="timeStampMessage">Friend timestamp</label>-->
+    <!--                </div>-->
+    <!--                <label> Name: <input type="text" name="name"></label>-->
+    <!--                <p>Hello good Sir!</p>-->
+                </div>
+                <div id="divUserMessages">
+    <!--                <div id="messageTimestampUser">-->
+    <!--                    <label for="timeStampMessage">User timestamp</label>-->
+    <!--                </div>-->
+    <!--                <label> Name: <input type="text" name="name"></label>-->
+    <!--                <p>Well met good Sir!</p>-->
+                </div>
+            </form>
         </article>
         <article class="MessageInput">
-            <div id="divInput">
-                <label for="inputMessage">Type your message in the box:
-                </label>
-                <input type="text" id="inputMessage" name="inputMessage"
-                       required minlength="1" maxlength="200" size="20">
-                <button type="submit">Send</button>
-            </div>
+            <form action="/api/messages/append" method="post" name="append">
+                <div id="divInput">
+                    <label for="inputMessage">Type your message in the box:
+                    </label>
+                    <input type="text" id="inputMessage" name="inputMessage"
+                           required minlength="1" maxlength="200" size="20">
+                    <button type="submit">Send</button>
+                </div>
+            </form>
         </article>
 
     </main>
@@ -53,12 +58,12 @@
 </body>
 </html>
 
-                Chat
------------------------------------------------
-            name  of recipient
-                (timestamp)
-(name friend)message: you
-                (timestamp)
-                                message:friend
+<!--                Chat-->
+<!-- -&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
+<!--            name  of recipient-->
+<!--                (timestamp)-->
+<!--(name friend)message: you-->
+<!--                (timestamp)-->
+<!--                                message:friend-->
 
-    input message: ----- send (emojis?)
+<!--    input message: -&#45;&#45;&#45;&#45; send (emojis?)-->
