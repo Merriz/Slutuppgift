@@ -23,8 +23,8 @@ async function init(){
 
 }
 
-function init(){
-    const form = document.querySelector('form[name="hej"]');
+function appendMessages(){
+    const form = document.querySelector('form[name="append"]');
 
     form.addEventListener('submit', async (event) => {
         event.preventDefault();
