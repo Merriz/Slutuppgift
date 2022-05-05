@@ -13,7 +13,6 @@
     <header id="headerTitle"> <h1>Chat</h1></header>
     <main>
         <article class="message" id="allMessages">
-            <form action="/api/messages" method="post" name="hej">
                 <div id="divFriendMessages">
     <!--                <div id="messageTimestampFriend">-->
     <!--                    <label for="timeStampMessage">Friend timestamp</label>-->
@@ -28,10 +27,9 @@
     <!--                <label> Name: <input type="text" name="name"></label>-->
     <!--                <p>Well met good Sir!</p>-->
                 </div>
-            </form>
         </article>
         <article class="MessageInput">
-            <form action="/api/messages/append" method="post" name="append">
+            <form name="append">
                 <div id="divInput">
                     <label for="inputMessage">Type your message in the box:
                     </label>
@@ -41,7 +39,6 @@
                 </div>
             </form>
         </article>
-
     </main>
 
     <footer>
