@@ -18,7 +18,9 @@ async function init(){
 
     const friendMessageContainer = document.getElementById("divFriendMessages");
     const userMessageContainer = document.getElementById("divUserMessages");
-
+    const lastTimestamp = request.messages.at(-1).timestamp;
+    localStorage.setItem('last', lastTimestamp);
+    console.log(lastTimestamp);
     for (let i = 0; i < request.messages.length; i++){
         let div = document.createElement("div");
         div.innerHTML = 'User: ' + request.messages[i].user + '' + request.messages[i].message;
@@ -36,9 +38,7 @@ addEventListener('submit', appendMessages);
 async function appendMessages(event) {
     event.preventDefault();
 
-    const form = event.target;
-    const formData = new FormData(form);
-    const formInput = Object.fromEntries(formData);
+    const message = document.getElementById('inputMessage').value;
     console.log(formInput);
     await fetch(`${baseUrl}/api/messages/append`, {
         method: 'POST',
@@ -46,8 +46,7 @@ async function appendMessages(event) {
             'Authorization': 'Bearer N31fRWVMZCtwU0JeZnBQdVBjTmlOImRzcTAxfl08cz1xR2lyWGFJfmo5JC5RNSc=',
             'Content-type': ''
         },
-        body: {message: formInput.inputMessage}
-        //body: JSON.stringify({message: `${formInput}`})
+        body: JSON.stringify({message})
     });
 }
 
