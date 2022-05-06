@@ -7,28 +7,33 @@
     color: darkcyan;
     background-color: beige;
 }
-#allMessages{
-    height: 50%;
-    width: 100%;
+#footerArea{
+    text-align: left;
+    padding: 10px;
+    border: 1px solid black;
+    height: 100px;
+    color: darkcyan;
+    background-color: beige;
+}
+#allMessagesBox{
+    height: 90%;
     box-sizing: border-box;
     padding-top: 10px;
     padding-left: 10px;
+    padding-bottom: 10px;
     border: 1px solid black;
 }
 #divUserMessages {
-    height: 50%;
-    width: 100%;
+    width: 50%;
     box-sizing: border-box;
-    padding-top: 10px;
-    padding-right: 10px;
+    padding: 10px;
     text-align: right;
+    overflow: scroll;
 }
 #divFriendMessages {
-    height: 50%;
-    width: 100%;
+    width: 50%;
     box-sizing: border-box;
-    padding-top: 10px;
-    padding-left: 10px;
+    padding: 10px;
     text-align: left;
 }
 #messageTimestampFriend, #messageTimestampUser {
@@ -42,4 +47,18 @@
     padding-top: 10px;
     padding-left: 10px;
     border: 1px solid black;
+}
+
+.messageBox{
+    display: flex;
+    gap: 2rem;
+    font-family: Calibri, fantasy;
+}
+
+.messageBox{
+    display: flex;
+}
+
+.footerBox{
+    display: flex;
 }
