@@ -18,31 +18,23 @@ async function init(){
 
     request.messages.sort((a, b) => a.timestamp - b.timestamp);
 
-    const friendMessageContainer = document.getElementById("divFriendMessages");
-    const userMessageContainer = document.getElementById("divUserMessages");
-    const lastTimestamp = request.messages.at(-1).timestamp;
-    localStorage.setItem('last', lastTimestamp);
-    console.log(lastTimestamp);
+    const messageBox = document.getElementById("allMessagesBox");
+
+    console.log(request.last);
+    localStorage.setItem('last', request.last);
+
     for (let i = 0; i < request.messages.length; i++){
         let div = document.createElement("div");
-
-        div.innerHTML = formatUnixTimestamp(request.messages[i].timestamp) + ' ' + request.messages[i].user + ': ' + request.messages[i].message + '<br>';
-        if (request.messages[i].user === "Johan") {
-            div.setAttribute(
-                'style',
-                'background-color: gray; color: white; border-radius: 20px; padding: 5px; margin: 2px'
-            );
-            friendMessageContainer.appendChild(div);
+        let p = document.createElement("p");
+        p.innerHTML = formatUnixTimestamp(request.messages[i].timestamp) + ' ' + request.messages[i].user + ': ' + request.messages[i].message + '<br>';
+        if (request.messages[i].user !== username) {
+            div.classList.add('friendMessages');
         }
         else {
-            userMessageContainer.appendChild(div);
-            div.setAttribute(
-                'style',
-                'background-color: #8976E6; color : ivory; border-radius: 20px; padding: 5px; margin 2px'
-
-
-            );
+            div.classList.add('userMessages');
         }
+        div.appendChild(p);
+        messageBox.appendChild(div);
     }
 }
 
@@ -59,7 +51,7 @@ async function appendMessages(event) {
             'Authorization': bearer,
             'Content-type': ''
         },
-        body: JSON.stringify({message})
+        body: JSON.stringify({message:message, user:username})
     });
 }
 

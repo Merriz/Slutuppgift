@@ -16,26 +16,35 @@
     background-color: beige;
 }
 #allMessagesBox{
+    display: inline-grid;
+    width: 100%;
     height: 90%;
     box-sizing: border-box;
-    padding-top: 10px;
-    padding-left: 10px;
-    padding-bottom: 10px;
+    padding: 10px;
     border: 1px solid black;
 }
-#divUserMessages {
+.messageColumnRight {
     width: 50%;
     box-sizing: border-box;
     padding: 10px;
     text-align: right;
-    overflow: scroll;
+    overflow: auto;
 }
-#divFriendMessages {
+.messageColumnLeft {
     width: 50%;
     box-sizing: border-box;
     padding: 10px;
     text-align: left;
 }
+
+#divFriendMessages{
+    display: inline-grid;
+}
+
+#divUserMessages{
+    display: inline-grid;
+}
+
 #messageTimestampFriend, #messageTimestampUser {
     text-align: center;
 }
@@ -51,8 +60,33 @@
 
 .messageBox{
     display: flex;
-    gap: 2rem;
     font-family: Calibri, fantasy;
+    overflow: auto;
+}
+
+#allMessagesBox div{
+    display: inline-block;
+    border-radius: 20px;
+    padding: 5px;
+    margin-bottom: 0.2em;
+}
+
+#allMessagesBox div p{
+    text-align: left;
+    margin-block-start: 0.2em;
+    margin-block-end: 0.2em;
+}
+
+.friendMessages{
+    background-color: gray;
+    color: white;
+    margin-right: auto;
+}
+
+.userMessages{
+    background-color: #8976E6;
+    color: ivory;
+    margin-left: auto;
 }
 
 .messageBox{
