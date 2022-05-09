@@ -12,6 +12,7 @@
     color: darkcyan;
     background-color: beige;
 }
+
 #footerArea{
     text-align: left;
     padding: 10px;
@@ -20,6 +21,7 @@
     color: darkcyan;
     background-color: beige;
 }
+
 #allMessagesBox{
     display: inline-grid;
     width: 100%;
@@ -28,31 +30,7 @@
     padding: 10px;
     border: 1px solid black;
 }
-.messageColumnRight {
-    width: 50%;
-    box-sizing: border-box;
-    padding: 10px;
-    text-align: right;
-    overflow: auto;
-}
-.messageColumnLeft {
-    width: 50%;
-    box-sizing: border-box;
-    padding: 10px;
-    text-align: left;
-}
 
-#divFriendMessages{
-    display: inline-grid;
-}
-
-#divUserMessages{
-    display: inline-grid;
-}
-
-#messageTimestampFriend, #messageTimestampUser {
-    text-align: center;
-}
 #divInput {
     height: 50px;
     width: 100%;
