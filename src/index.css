@@ -61,6 +61,14 @@
     margin-block-end: 0.2em;
     padding: 0 0.5em;
 }
+.buttonSend {
+    transition-property: color;
+}
+
+.buttonSend:hover{
+    background-color: #8976E6;
+    color:ivory;
+}
 
 .friendMessages{
     background-color: var(--friend-message-color);
