@@ -1,17 +1,22 @@
 const baseUrl = 'https://ha-slutuppgift-chat-do.westling.workers.dev';
 const bearer = 'Bearer N31fRWVMZCtwU0JeZnBQdVBjTmlOImRzcTAxfl08cz1xR2lyWGFJfmo5JC5RNSc=';
 const username = 'Dennis&Gustav';
-addEventListener('pageshow', init);
+let msgTstamp;
+let userTag;
+let msgBody;
+let limiter = '';
 
-//setInterval(getUpdateStatus, 10000);
+addEventListener('pageshow', init);
+setInterval(getUpdateStatus, 2000);
+addEventListener('submit', appendMessages);
 
 async function init(){
-    const request = await fetch(`${baseUrl}/api/messages`, {
+    const request = await fetch(`${baseUrl}/api/messages${limiter}`, {
         method: 'GET',
         headers: {
             'Authorization': bearer,
             'Content-type': ''
-        }
+        },
     }).then((response) => response.json()).then((data) => {
         return data
     });
@@ -19,26 +24,29 @@ async function init(){
     request.messages.sort((a, b) => a.timestamp - b.timestamp);
 
     const messageBox = document.getElementById("allMessagesBox");
-
-    console.log(request.last);
     localStorage.setItem('last', request.last);
+    const fragment = new DocumentFragment();
 
     for (let i = 0; i < request.messages.length; i++){
-        let div = document.createElement("div");
-        let p = document.createElement("p");
-        p.innerHTML = formatUnixTimestamp(request.messages[i].timestamp) + ' ' + request.messages[i].user + ': ' + request.messages[i].message + '<br>';
+        let container = document.createElement("article");
+        let content = document.createElement("p");
+
+        msgTstamp = request.messages[i].timestamp;
+        userTag = request.messages[i].user+":";
+        msgBody = request.messages[i].message;
+        content.innerHTML = formatUnixTimestamp(msgTstamp) +`<br> ${userTag} ${msgBody} <br>`;
+
         if (request.messages[i].user !== username) {
-            div.classList.add('friendMessages');
+            container.classList.add('friendMessages','message');
         }
         else {
-            div.classList.add('userMessages');
+            container.classList.add('userMessages','message');
         }
-        div.appendChild(p);
-        messageBox.appendChild(div);
+        container.appendChild(content);
+        fragment.appendChild(container);
     }
+    messageBox.appendChild(fragment);
 }
-
-addEventListener('submit', appendMessages);
 
 async function appendMessages(event) {
     event.preventDefault();
@@ -53,23 +61,26 @@ async function appendMessages(event) {
         },
         body: JSON.stringify({message:message, user:username})
     });
+    document.getElementById('inputMessage').value = '';
 }
 
-function formatUnixTimestamp(unix_timestamp) {
-    const date = new Date(unix_timestamp);
-    return date.toLocaleDateString("en-GB");
+function formatUnixTimestamp(unixTimestamp) {
+    return new Intl.DateTimeFormat('sv-FI', {dateStyle: 'short', timeStyle: 'short'}).format(unixTimestamp);
 }
 
 async function getUpdateStatus() {
-    await fetch(`${baseUrl}/api/messages/updated`, {
+    const request = await fetch(`${baseUrl}/api/messages/updated`, {
         method: 'POST',
         headers: {
             'Authorization': bearer,
             'Content-type': ''
         },
-        body: localStorage.getItem('last')
-    }).then((response) => response.json()).then((data) => {
-        console.log(data)
-        return data
+        body: JSON.stringify({last:Number(localStorage.getItem('last'))})
     });
+    const response = await request.json();
+
+    if (!response.updated){
+        limiter = '?limit=1';
+        await init();
+    }
 }

@@ -12,7 +12,6 @@
     color: darkcyan;
     background-color: beige;
 }
-
 #footerArea{
     text-align: left;
     padding: 10px;
@@ -21,8 +20,7 @@
     color: darkcyan;
     background-color: beige;
 }
-
-#allMessagesBox{
+#allMessagesBox {
     display: inline-grid;
     width: 100%;
     height: 90%;
@@ -47,22 +45,33 @@
     overflow: auto;
 }
 
-#allMessagesBox div{
+#allMessagesBox .message{
     display: inline-block;
     border-radius: 20px;
     padding: 5px;
     margin-bottom: 0.2em;
     max-width: 45%;
+    animation: enter .5s ease forwards;
+    opacity: 0;
 }
 
-#allMessagesBox div p{
+@keyframes enter {
+    to{
+        opacity: 1;
+    }
+}
+
+#allMessagesBox .message p{
     text-align: left;
     margin-block-start: 0.2em;
     margin-block-end: 0.2em;
     padding: 0 0.5em;
 }
+
 .buttonSend {
     transition-property: color;
+    transition-duration: 1s;
+    transition-timing-function: ease-in-out;
 }
 
 .buttonSend:hover{
